@@ -1,0 +1,34 @@
+name: Push to GCR GitHub Action
+author: Oscar Silver <oscar.silver@moltir.com>
+description: An action that builds and pushes a container to GCR
+inputs:
+  service_account_name:
+    description: Name of the service account used to authenticate with GCR
+    required: true
+  gcloud_service_key:
+    description: Google cloud service key as base64 encoded json
+    required: true
+  registry:
+    description: The GCR registry to use
+    required: false
+    default: 'eu.gcr.io'
+  project_id:
+    description: ID of the GCP project
+    required: true
+  image_name:
+    description: Name of the image
+    required: true
+  image_tags:
+    description: Comma separated list of tags that should be pushed to GCR
+    default: latest
+    required: false
+  dockerfile:
+    description: Dockerfile that will build the image
+    required: true
+  context:
+    description: Docker build context
+    required: false
+    default: '.'
+runs:
+  using: docker
+  image: Dockerfile
