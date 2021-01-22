@@ -1,6 +1,6 @@
 name: Push to GCR GitHub Action
 author: Oscar Silver <oscar.silver@moltir.com>
-description: An action that builds and pushes a container to GCR
+description: An action that builds a docker image and pushes it to GCR
 inputs:
   service_account_name:
     description: Name of the service account used to authenticate with GCR
@@ -24,7 +24,8 @@ inputs:
     required: false
   dockerfile:
     description: Dockerfile that will build the image
-    required: true
+    default: './Dockerfile'
+    required: false
   context:
     description: Docker build context
     required: false
